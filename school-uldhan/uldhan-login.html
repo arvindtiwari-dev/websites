@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Student portal login for GOVT. HIGH SCH. ULDHAN">
+  <title>GOVT. HIGH SCH. ULDHAN | Student Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/school.css">
+</head>
+<body>
+  <div class="top-strip">
+    <div class="container">
+      <span><strong>Portal:</strong> Students, Parents, and Staff</span>
+      <span><strong>Access:</strong> Authorized Credentials</span>
+      <span><strong>Support:</strong> School Administration Desk</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="main-nav">
+      <div class="container">
+        <a class="brand" href="uldhan-index.html">
+          <img src="assets/images/all-img/logo.png" alt="School Logo">
+          <div class="brand-title">
+            <span>GOVT. HIGH SCH. ULDHAN</span>
+            <small>Kharkhoda Block, Meerut, Uttar Pradesh</small>
+          </div>
+        </a>
+        <button class="nav-toggle" type="button">Menu</button>
+        <nav id="siteNav">
+          <ul>
+            <li><a data-page="uldhan-index.html" href="uldhan-index.html">Home</a></li>
+            <li><a data-page="uldhan-about.html" href="uldhan-about.html">About</a></li>
+            <li><a data-page="uldhan-admissions.html" href="uldhan-admissions.html">Admissions</a></li>
+            <li><a data-page="uldhan-academics.html" href="uldhan-academics.html">Academics</a></li>
+            <li><a data-page="uldhan-faculty.html" href="uldhan-faculty.html">Faculty</a></li>
+            <li><a data-page="uldhan-news-events.html" href="uldhan-news-events.html">News & Events</a></li>
+            <li><a data-page="uldhan-gallery.html" href="uldhan-gallery.html">Gallery</a></li>
+            <li><a data-page="uldhan-downloads.html" href="uldhan-downloads.html">Downloads</a></li>
+            <li><a data-page="uldhan-results-notices.html" href="uldhan-results-notices.html">Results & Notices</a></li>
+            <li><a data-page="uldhan-login.html" href="uldhan-login.html">Portal</a></li>
+            <li><a data-page="uldhan-contact.html" href="uldhan-contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="inner-hero" style="background-image: url('assets/images/all-img/ins-details.png');">
+    <div class="container">
+      <h1>Student Portal / Login</h1>
+      <p class="crumb">Home / Portal</p>
+    </div>
+  </section>
+
+  <section class="section-block section-white">
+    <div class="container split-grid">
+      <div class="form-panel">
+        <div class="section-head">
+          <h2>Portal Login</h2>
+          <p>Access attendance, notices, and student records.</p>
+        </div>
+        <form id="portalLoginForm" class="form-grid">
+          <select name="role" required>
+            <option value="">Select User Type</option>
+            <option>Student</option>
+            <option>Parent</option>
+            <option>Teacher</option>
+            <option>Administrator</option>
+          </select>
+          <input type="text" name="username" placeholder="User ID / Admission Number" required>
+          <input class="full" type="password" name="password" placeholder="Password" required>
+          <button class="btn-main full" type="submit">Login</button>
+        </form>
+        <div id="portalMessage" class="message-box"></div>
+        <p class="form-note">This portal is configured as a demo flow for the website template. Connect your real authentication backend for live deployment.</p>
+      </div>
+      <div>
+        <div class="section-head">
+          <h2>Portal Services</h2>
+          <p>Core actions available for school users.</p>
+        </div>
+        <div class="service-grid">
+          <div class="card-box">
+            <h3>Attendance View</h3>
+            <p>Track daily attendance and absence records.</p>
+          </div>
+          <div class="card-box">
+            <h3>Homework & Assignments</h3>
+            <p>Check subject-wise tasks and due dates.</p>
+          </div>
+          <div class="card-box">
+            <h3>Result Access</h3>
+            <p>View assessment summaries and progress details.</p>
+          </div>
+          <div class="card-box">
+            <h3>Notice Alerts</h3>
+            <p>Get latest school notices and event circulars.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>GOVT. HIGH SCH. ULDHAN</h4>
+          <p>Portal access for student services, school communication, and result updates.</p>
+        </div>
+        <div>
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="uldhan-results-notices.html">Results & Notices</a></li>
+            <li><a href="uldhan-downloads.html">Downloads</a></li>
+            <li><a href="uldhan-contact.html">Support</a></li>
+            <li><a href="uldhan-news-events.html">Events</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>School Pages</h4>
+          <ul>
+            <li><a href="uldhan-about.html">About</a></li>
+            <li><a href="uldhan-academics.html">Academics</a></li>
+            <li><a href="uldhan-faculty.html">Faculty</a></li>
+            <li><a href="uldhan-admissions.html">Admissions</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li>Uldhan, Kharkhoda Block</li>
+            <li>Meerut District, Uttar Pradesh</li>
+            <li>School office login support</li>
+            <li>Mon-Sat working days</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2026 GOVT. HIGH SCH. ULDHAN. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/school.js"></script>
+</body>
+</html>
