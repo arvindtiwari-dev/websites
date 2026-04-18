@@ -89,6 +89,7 @@ body.mmactive {
   z-index: 9999;
   display: none;
 }
+
 #sm_menu_ham span {
   background-color: #00beac;
   border-radius: 5px;
