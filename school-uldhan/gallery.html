@@ -120,51 +120,75 @@
       </div>
       <div class="gallery-grid">
         <figure class="gallery-item">
-          <img src="img/events/c11.jpg" alt="School activity">
+          <a class="gallery-popup" href="img/events/c11.jpg" title="Morning assembly and student participation.">
+            <img src="img/events/c11.jpg" alt="School activity">
+          </a>
           <figcaption>Morning assembly and student participation.</figcaption>
         </figure>
         <figure class="gallery-item">
-          <img src="img/events/c14.jpg" alt="Classroom activity">
+          <a class="gallery-popup" href="img/events/c14.jpg" title="Classroom learning and teacher interaction.">
+            <img src="img/events/c14.jpg" alt="Classroom activity">
+          </a>
           <figcaption>Classroom learning and teacher interaction.</figcaption>
         </figure>
         <figure class="gallery-item">
-          <img src="img/events/c1.jpg" alt="Student session">
+          <a class="gallery-popup" href="img/events/c1.jpg" title="Group discussion during class project.">
+            <img src="img/events/c1.jpg" alt="Student session">
+          </a>
           <figcaption>Group discussion during class project.</figcaption>
         </figure>
         <figure class="gallery-item">
-          <img src="img/events/c2.jpg" alt="Event preparation">
+          <a class="gallery-popup" href="img/events/c2.jpg" title="Preparation for school awareness event.">
+            <img src="img/events/c2.jpg" alt="Event preparation">
+          </a>
           <figcaption>Preparation for school awareness event.</figcaption>
         </figure>
         <figure class="gallery-item">
-          <img src="img/events/c3.jpg" alt="School celebration">
+          <a class="gallery-popup" href="img/events/c3.jpg" title="Cultural participation and celebration day.">
+            <img src="img/events/c3.jpg" alt="School celebration">
+          </a>
           <figcaption>Cultural participation and celebration day.</figcaption>
         </figure>
         <figure class="gallery-item">
-          <img src="img/events/c4.jpg" alt="Sports practice">
+          <a class="gallery-popup" href="img/events/c4.jpg" title="Sports practice at school playground.">
+            <img src="img/events/c4.jpg" alt="Sports practice">
+          </a>
           <figcaption>Sports practice at school playground.</figcaption>
         </figure>
         <figure class="gallery-item">
-          <img src="img/events/c5.jpg" alt="Learning session">
+          <a class="gallery-popup" href="img/events/c5.jpg" title="Subject support and revision workshop.">
+            <img src="img/events/c5.jpg" alt="Learning session">
+          </a>
           <figcaption>Subject support and revision workshop.</figcaption>
         </figure>
         <figure class="gallery-item">
-          <img src="img/events/c6.jpg" alt="Classroom board work">
+          <a class="gallery-popup" href="img/events/c6.jpg" title="Board practice and concept explanation.">
+            <img src="img/events/c6.jpg" alt="Classroom board work">
+          </a>
           <figcaption>Board practice and concept explanation.</figcaption>
         </figure>
         <figure class="gallery-item">
-          <img src="img/events/c7.jpg" alt="Student classroom">
+          <a class="gallery-popup" href="img/events/c7.jpg" title="Collaborative learning session in class.">
+            <img src="img/events/c7.jpg" alt="Student classroom">
+          </a>
           <figcaption>Collaborative learning session in class.</figcaption>
         </figure>
         <figure class="gallery-item">
-          <img src="img/events/c8.jpg" alt="Teacher session">
+          <a class="gallery-popup" href="img/events/c8.jpg" title="Teacher-led interactive learning period.">
+            <img src="img/events/c8.jpg" alt="Teacher session">
+          </a>
           <figcaption>Teacher-led interactive learning period.</figcaption>
         </figure>
         <figure class="gallery-item">
-          <img src="img/events/c9.jpg" alt="Practice period">
+          <a class="gallery-popup" href="img/events/c9.jpg" title="Worksheet and practice-based activities.">
+            <img src="img/events/c9.jpg" alt="Practice period">
+          </a>
           <figcaption>Worksheet and practice-based activities.</figcaption>
         </figure>
         <figure class="gallery-item">
-          <img src="img/events/c13.jpg" alt="School event photo">
+          <a class="gallery-popup" href="img/events/c13.jpg" title="Event participation by students and staff.">
+            <img src="img/events/c13.jpg" alt="School event photo">
+          </a>
           <figcaption>Event participation by students and staff.</figcaption>
         </figure>
       </div>
@@ -225,6 +249,25 @@
   <script src="assets/js/wow.min.js"></script>
   <script src="assets/js/scripts.js"></script>
   <script src="assets/js/school.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Initialize Magnific Popup for gallery items
+      $('.gallery-grid').magnificPopup({
+        delegate: '.gallery-popup',
+        type: 'image',
+        gallery: {
+          enabled: true,
+          navigateByImgClick: true,
+          preload: [0, 1]
+        },
+        image: {
+          titleSrc: function(item) {
+            return item.el.attr('title');
+          }
+        }
+      });
+    });
+  </script>
 </body>
 </html>
 
