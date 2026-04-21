@@ -153,10 +153,12 @@ function initLanguageSwitcher() {
     style.id = "uldhan-lang-style";
     style.textContent =
       "#uldhan-lang-switcher{position:fixed;right:16px;bottom:16px;z-index:99999;background:#fff;border:1px solid #d9d9d9;border-radius:8px;padding:6px;box-shadow:0 6px 18px rgba(0,0,0,.15);display:flex;gap:6px;align-items:center;}" +
-      ".uldhan-lang-btn{border:1px solid #0d6efd;background:#fff;color:#0d6efd;padding:4px 8px;border-radius:6px;font-size:12px;font-weight:600;line-height:1;cursor:pointer;}" +
+      ".uldhan-lang-btn{border:1px solid #0d6efd;background:#fff;color:#0d6efd;padding:4px 8px;border-radius:6px;font-size:12px;font-weight:600;line-height:1;cursor:pointer;transition:all 0.2s;}" +
+      ".uldhan-lang-btn:hover{background:#e7f1ff;}" +
       ".uldhan-lang-btn.active{background:#0d6efd;color:#fff;}" +
       "#uldhan-google-translate{display:none;}" +
       ".goog-te-banner-frame.skiptranslate{display:none!important;}" +
+      ".goog-te-gadget{font-family:Roboto,Arial,sans-serif!important;}" +
       "body{top:0!important;}";
     document.head.appendChild(style);
   }
@@ -178,15 +180,38 @@ function initLanguageSwitcher() {
     });
   }
 
+  function triggerGoogleTranslate(lang) {
+    // Try multiple methods to trigger Google Translate
+    
+    // Method 1: Find and trigger the language combo
+    var combo = document.querySelector(".goog-te-combo");
+    if (combo) {
+      combo.value = lang;
+      combo.dispatchEvent(new Event("change"));
+      return true;
+    }
+    
+    // Method 2: Use google.translate API directly
+    if (window.google && google.translate && google.translate.TranslateService) {
+      google.translate.TranslateService.getInstance().setPageLanguage(lang);
+      return true;
+    }
+    
+    // Method 3: Fallback - reload with cookie set
+    return false;
+  }
+
   function applyLanguage(lang) {
     localStorage.setItem("uldhan-lang", lang);
     setGoogleCookie(lang);
     updateButtons(lang);
 
-    const combo = document.querySelector(".goog-te-combo");
-    if (combo) {
-      combo.value = lang;
-      combo.dispatchEvent(new Event("change"));
+    // Try to trigger translation
+    if (!triggerGoogleTranslate(lang)) {
+      // If direct trigger fails, wait a bit and try again
+      setTimeout(function() {
+        triggerGoogleTranslate(lang);
+      }, 300);
     }
   }
 
@@ -194,14 +219,17 @@ function initLanguageSwitcher() {
   setGoogleCookie(savedLang);
   updateButtons(savedLang);
 
+  // Add click handlers to language buttons
   document.querySelectorAll("#uldhan-lang-switcher .uldhan-lang-btn").forEach(function (btn) {
     btn.addEventListener("click", function () {
       applyLanguage(btn.getAttribute("data-lang"));
     });
   });
 
+  // Initialize Google Translate
   window.uldhanGoogleTranslateInit = function () {
     if (!window.google || !google.translate || !google.translate.TranslateElement) {
+      console.warn("Google Translate not loaded");
       return;
     }
 
@@ -215,19 +243,28 @@ function initLanguageSwitcher() {
       "uldhan-google-translate"
     );
 
+    // Apply saved language after widget loads
     setTimeout(function () {
-      applyLanguage(localStorage.getItem("uldhan-lang") || "en");
-    }, 250);
+      var savedLang = localStorage.getItem("uldhan-lang") || "en";
+      if (savedLang !== "en") {
+        applyLanguage(savedLang);
+      }
+    }, 500);
   };
 
+  // Load Google Translate script
   if (!document.querySelector('script[src*="translate_a/element.js"]')) {
-    const script = document.createElement("script");
+    var script = document.createElement("script");
     script.src = "https://translate.google.com/translate_a/element.js?cb=uldhanGoogleTranslateInit";
     script.async = true;
-    document.body.appendChild(script);
+    script.defer = true;
+    document.head.appendChild(script);
   } else {
+    // Script already loaded
     setTimeout(function () {
-      applyLanguage(savedLang);
-    }, 500);
+      if (window.uldhanGoogleTranslateInit) {
+        window.uldhanGoogleTranslateInit();
+      }
+    }, 100);
   }
 }
